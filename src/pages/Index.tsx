@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AgeGate } from '@/components/AgeGate';
+import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
 import { BenefitsSection } from '@/components/BenefitsSection';
 import { FlavorsSection } from '@/components/FlavorsSection';
@@ -48,12 +49,25 @@ const Index = () => {
       {/* Main Content - Only show after age verification */}
       {isAgeVerified && (
         <>
-          <HeroSection />
-          <BenefitsSection />
-          <FlavorsSection />
-          <StorySection />
-          <TestimonialsSection />
-          <SubscriptionSection />
+          <Navigation />
+          <section id="hero">
+            <HeroSection />
+          </section>
+          <section id="benefits">
+            <BenefitsSection />
+          </section>
+          <section id="flavors">
+            <FlavorsSection />
+          </section>
+          <section id="story">
+            <StorySection />
+          </section>
+          <section id="testimonials">
+            <TestimonialsSection />
+          </section>
+          <section id="subscription">
+            <SubscriptionSection />
+          </section>
           <Footer />
         </>
       )}
