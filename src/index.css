@@ -2,41 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* NAVA Seltzer Design System - Premium wellness meets nightlife energy */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Colors - Warm neutrals */
+    --background: 30 20% 98%;
+    --foreground: 20 20% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 30 20% 97%;
+    --card-foreground: 20 20% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 30 20% 97%;
+    --popover-foreground: 20 20% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep charcoal with warmth */
+    --primary: 20 25% 20%;
+    --primary-foreground: 30 20% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft warm gray */
+    --secondary: 30 15% 92%;
+    --secondary-foreground: 20 25% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 30 15% 90%;
+    --muted-foreground: 20 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 30 15% 88%;
+    --accent-foreground: 20 25% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 30 20% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 30 20% 88%;
+    --input: 30 20% 88%;
+    --ring: 20 25% 20%;
 
-    --radius: 0.5rem;
+    /* Flavor Colors */
+    --mango-chili-from: 25 85% 65%;
+    --mango-chili-to: 0 75% 55%;
+    --cucumber-lime-from: 120 45% 75%;
+    --cucumber-lime-to: 85 65% 65%;
+    --hibiscus-ginger-from: 340 55% 75%;
+    --hibiscus-ginger-to: 45 75% 70%;
+    --grapefruit-rosemary-from: 350 45% 75%;
+    --grapefruit-rosemary-to: 150 35% 55%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(30 40% 96%), hsl(25 50% 92%));
+    --gradient-mango-chili: linear-gradient(135deg, hsl(var(--mango-chili-from)), hsl(var(--mango-chili-to)));
+    --gradient-cucumber-lime: linear-gradient(135deg, hsl(var(--cucumber-lime-from)), hsl(var(--cucumber-lime-to)));
+    --gradient-hibiscus-ginger: linear-gradient(135deg, hsl(var(--hibiscus-ginger-from)), hsl(var(--hibiscus-ginger-to)));
+    --gradient-grapefruit-rosemary: linear-gradient(135deg, hsl(var(--grapefruit-rosemary-from)), hsl(var(--grapefruit-rosemary-to)));
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(20 25% 20% / 0.08);
+    --shadow-premium: 0 8px 32px hsl(20 25% 20% / 0.12);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.15);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 

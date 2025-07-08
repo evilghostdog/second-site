@@ -61,7 +61,43 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// NAVA Flavor Colors
+				'mango-chili': {
+					from: 'hsl(var(--mango-chili-from))',
+					to: 'hsl(var(--mango-chili-to))'
+				},
+				'cucumber-lime': {
+					from: 'hsl(var(--cucumber-lime-from))',
+					to: 'hsl(var(--cucumber-lime-to))'
+				},
+				'hibiscus-ginger': {
+					from: 'hsl(var(--hibiscus-ginger-from))',
+					to: 'hsl(var(--hibiscus-ginger-to))'
+				},
+				'grapefruit-rosemary': {
+					from: 'hsl(var(--grapefruit-rosemary-from))',
+					to: 'hsl(var(--grapefruit-rosemary-to))'
 				}
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-mango-chili': 'var(--gradient-mango-chili)',
+				'gradient-cucumber-lime': 'var(--gradient-cucumber-lime)',
+				'gradient-hibiscus-ginger': 'var(--gradient-hibiscus-ginger)',
+				'gradient-grapefruit-rosemary': 'var(--gradient-grapefruit-rosemary)'
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'premium': 'var(--shadow-premium)',
+				'glow': 'var(--shadow-glow)'
+			},
+			transitionTimingFunction: {
+				'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+				'bounce': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'
+			},
+			fontFamily: {
+				'sans': ['Inter', 'system-ui', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +120,51 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'shimmer': {
+					'0%': {
+						backgroundPosition: '-200px 0'
+					},
+					'100%': {
+						backgroundPosition: 'calc(200px + 100%) 0'
+					}
+				},
+				'sparkle': {
+					'0%, 100%': {
+						opacity: '0',
+						transform: 'scale(0.8)'
+					},
+					'50%': {
+						opacity: '1',
+						transform: 'scale(1)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-up': 'fade-up 0.6s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'shimmer': 'shimmer 2s linear infinite',
+				'sparkle': 'sparkle 2s ease-in-out infinite'
 			}
 		}
 	},
