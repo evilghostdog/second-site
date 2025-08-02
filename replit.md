@@ -1,8 +1,8 @@
-# NAVA Seltzer - Premium Sparkling Beverage Landing Page
+# NAVA Seltzer - Premium Sparkling Beverage E-Commerce Site
 
 ## Overview
 
-NAVA is a premium sparkling alcoholic beverage brand focused on clean ingredients, zero sugar, and sophisticated flavors. This is a marketing landing page built as a single-page application featuring an age gate, product showcase, and subscription functionality. The application presents a modern, wellness-focused alcoholic beverage with four distinct flavors: Mango-Chili, Cucumber-Lime, Hibiscus-Ginger, and Grapefruit-Rosemary.
+NAVA is a premium sparkling alcoholic beverage brand focused on clean ingredients, zero sugar, and sophisticated flavors. This is a complete e-commerce application featuring an age gate, product showcase, shopping cart, and secure payment processing. The application presents a modern, wellness-focused alcoholic beverage with four distinct flavors: Mango-Chili, Cucumber-Lime, Hibiscus-Ginger, and Grapefruit-Rosemary.
 
 ## User Preferences
 
@@ -22,6 +22,7 @@ Preferred communication style: Simple, everyday language.
 - **Server**: Express.js with TypeScript running on Node.js
 - **Database Layer**: Drizzle ORM configured for PostgreSQL with schema definitions
 - **Storage Interface**: Abstracted storage layer with in-memory implementation for development
+- **Payment Processing**: Stripe integration for secure payment handling with webhook support
 - **API Structure**: RESTful endpoints with `/api` prefix and centralized error handling
 - **Development Setup**: Hot module replacement with Vite integration for seamless development
 
@@ -33,8 +34,10 @@ Preferred communication style: Simple, everyday language.
 
 ### Component Architecture
 - **Design System**: Custom Tailwind configuration with NAVA brand colors and gradients
-- **Component Library**: Comprehensive UI components including age gate, product showcase, testimonials, and subscription forms
+- **Component Library**: Comprehensive UI components including age gate, product showcase, shopping cart, checkout forms, and payment processing
+- **E-Commerce Features**: Product catalog, shopping cart with persistent storage, secure checkout flow, and order confirmation
 - **Responsive Design**: Mobile-first approach with responsive breakpoints and adaptive layouts
+- **State Management**: React Context for cart management with localStorage persistence
 - **Animations**: CSS-based animations for enhanced user experience including floating elements and fade-in effects
 
 ### Authentication & Age Verification

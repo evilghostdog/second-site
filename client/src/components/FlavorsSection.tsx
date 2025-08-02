@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useLocation } from 'wouter';
+import { ShoppingCart } from 'lucide-react';
 import mangoChiliCan from '@/assets/nava-mango-chili.jpg';
 import cucumberLimeCan from '@/assets/nava-cucumber-lime.jpg';
 import hibiscusGingerCan from '@/assets/nava-hibiscus-ginger.jpg';
@@ -42,6 +44,7 @@ const flavors = [
 
 export const FlavorsSection: React.FC = () => {
   const [hoveredFlavor, setHoveredFlavor] = useState<string | null>(null);
+  const [, setLocation] = useLocation();
 
   return (
     <section id="flavors" className="py-20 bg-secondary/30">
@@ -121,6 +124,19 @@ export const FlavorsSection: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Shop Now Section */}
+        <div className="text-center mt-16">
+          <Button 
+            variant="cta" 
+            size="xl" 
+            className="group"
+            onClick={() => setLocation('/shop')}
+          >
+            <ShoppingCart className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+            Shop All Flavors
+          </Button>
         </div>
       </div>
     </section>

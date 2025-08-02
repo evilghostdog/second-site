@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useLocation } from 'wouter';
 import mangoChiliCan from '@/assets/nava-mango-chili.jpg';
 
 export const HeroSection: React.FC = () => {
+  const [, setLocation] = useLocation();
   return (
     <section className="min-h-screen relative bg-gradient-hero flex items-center justify-center overflow-hidden">
       {/* Background sparkles */}
@@ -52,9 +54,9 @@ export const HeroSection: React.FC = () => {
               variant="premium" 
               size="xl" 
               className="group"
-              onClick={() => document.getElementById('flavors')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setLocation('/shop')}
             >
-              Shop the Flavor
+              Shop Now
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </div>
