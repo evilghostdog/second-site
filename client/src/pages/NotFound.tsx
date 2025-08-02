@@ -5,10 +5,13 @@ const NotFound = () => {
   const [location] = useLocation();
 
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location
-    );
+    // Only log error if we're not on the home page
+    if (location !== '/') {
+      console.error(
+        "404 Error: User attempted to access non-existent route:",
+        location
+      );
+    }
   }, [location]);
 
   return (
