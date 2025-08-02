@@ -15,7 +15,11 @@ if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
 }
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const CheckoutForm: React.FC = () => {
+interface CheckoutFormProps {
+  totalAmount: number;
+}
+
+const CheckoutForm: React.FC<CheckoutFormProps> = ({ totalAmount }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { items, getTotalPrice, clearCart } = useCart();
@@ -80,7 +84,7 @@ const CheckoutForm: React.FC = () => {
         size="lg"
         disabled={!stripe || isProcessing}
       >
-        {isProcessing ? 'Processing...' : `Pay $${getTotalPrice().toFixed(2)}`}
+        {isProcessing ? 'Processing...' : `Pay $${totalAmount > 0 ? totalAmount.toFixed(2) : getTotalPrice().toFixed(2)}`}
       </Button>
     </form>
   );
@@ -90,6 +94,7 @@ export const Checkout: React.FC = () => {
   const { items, getTotalPrice } = useCart();
   const [, setLocation] = useLocation();
   const [clientSecret, setClientSecret] = useState("");
+  const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
     if (items.length === 0) {
@@ -116,6 +121,7 @@ export const Checkout: React.FC = () => {
       .then((res) => res.json())
       .then((data) => {
         setClientSecret(data.clientSecret);
+        setTotalAmount(data.amount);
       })
       .catch((error) => {
         console.error('Error creating payment intent:', error);
@@ -192,7 +198,7 @@ export const Checkout: React.FC = () => {
                   </div>
                   <div className="flex justify-between text-lg font-semibold">
                     <span>Total:</span>
-                    <span>${(getTotalPrice() + (getTotalPrice() >= 50 ? 0 : 8.99)).toFixed(2)}</span>
+                    <span>${totalAmount > 0 ? totalAmount.toFixed(2) : (getTotalPrice() + (getTotalPrice() >= 50 ? 0 : 8.99)).toFixed(2)}</span>
                   </div>
                 </div>
               </CardContent>
@@ -202,7 +208,7 @@ export const Checkout: React.FC = () => {
           {/* Payment Form */}
           <div>
             <Elements stripe={stripePromise} options={{ clientSecret }}>
-              <CheckoutForm />
+              <CheckoutForm totalAmount={totalAmount} />
             </Elements>
           </div>
         </div>
