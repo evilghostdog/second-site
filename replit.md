@@ -1,0 +1,73 @@
+# NAVA Seltzer - Premium Sparkling Beverage Landing Page
+
+## Overview
+
+NAVA is a premium sparkling alcoholic beverage brand focused on clean ingredients, zero sugar, and sophisticated flavors. This is a marketing landing page built as a single-page application featuring an age gate, product showcase, and subscription functionality. The application presents a modern, wellness-focused alcoholic beverage with four distinct flavors: Mango-Chili, Cucumber-Lime, Hibiscus-Ginger, and Grapefruit-Rosemary.
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
+
+## System Architecture
+
+### Frontend Architecture
+- **Framework**: React 18 with TypeScript and Vite for development
+- **UI Framework**: Radix UI components with shadcn/ui for consistent, accessible design
+- **Styling**: Tailwind CSS with custom design system featuring warm neutrals and flavor-specific gradients
+- **Routing**: Wouter for lightweight client-side routing
+- **State Management**: TanStack Query for server state and React hooks for local state
+- **Build Tool**: Vite with custom configuration for development and production builds
+
+### Backend Architecture
+- **Server**: Express.js with TypeScript running on Node.js
+- **Database Layer**: Drizzle ORM configured for PostgreSQL with schema definitions
+- **Storage Interface**: Abstracted storage layer with in-memory implementation for development
+- **API Structure**: RESTful endpoints with `/api` prefix and centralized error handling
+- **Development Setup**: Hot module replacement with Vite integration for seamless development
+
+### Database Design
+- **ORM**: Drizzle ORM with PostgreSQL dialect
+- **Schema**: User management system with username/password authentication
+- **Validation**: Zod schemas for type-safe data validation and transformation
+- **Migrations**: Drizzle-kit for database schema management and migrations
+
+### Component Architecture
+- **Design System**: Custom Tailwind configuration with NAVA brand colors and gradients
+- **Component Library**: Comprehensive UI components including age gate, product showcase, testimonials, and subscription forms
+- **Responsive Design**: Mobile-first approach with responsive breakpoints and adaptive layouts
+- **Animations**: CSS-based animations for enhanced user experience including floating elements and fade-in effects
+
+### Authentication & Age Verification
+- **Age Gate**: Session-based age verification that prevents underage access to alcoholic beverage content
+- **Session Management**: Browser sessionStorage for maintaining age verification status
+- **Redirect Logic**: Automatic redirection for underage users to external safe sites
+
+## External Dependencies
+
+### Core Dependencies
+- **@neondatabase/serverless**: Neon database adapter for PostgreSQL connections
+- **drizzle-orm**: TypeScript ORM for database operations and query building
+- **@tanstack/react-query**: Server state management and data fetching library
+- **express**: Web application framework for Node.js backend services
+
+### UI and Styling
+- **@radix-ui/react-***: Comprehensive accessible component primitives for dialogs, forms, navigation
+- **tailwindcss**: Utility-first CSS framework with custom design tokens
+- **class-variance-authority**: Type-safe variant API for component styling
+- **lucide-react**: Modern icon library for consistent iconography
+
+### Development Tools
+- **vite**: Fast build tool and development server with HMR support
+- **tsx**: TypeScript execution engine for Node.js development
+- **@replit/vite-plugin-runtime-error-modal**: Development error handling for Replit environment
+- **wouter**: Lightweight routing library for single-page applications
+
+### Form and Validation
+- **react-hook-form**: Performant forms library with validation support
+- **@hookform/resolvers**: Validation resolver adapters for react-hook-form
+- **zod**: TypeScript-first schema validation library
+
+### Utilities
+- **date-fns**: Modern date utility library for JavaScript
+- **clsx**: Utility for constructing className strings conditionally
+- **nanoid**: URL-friendly unique string ID generator
