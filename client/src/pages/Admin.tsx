@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -13,9 +13,12 @@ import {
   AlertCircle,
   Calendar,
   Download,
-  RefreshCw
+  RefreshCw,
+  LogOut
 } from 'lucide-react';
 import { Navigation } from '@/components/Navigation';
+import { AdminLogin } from './AdminLogin';
+import { useLocation } from 'wouter';
 
 // Mock data for demonstration - in production, this would come from your database
 const mockOrders = [
@@ -62,6 +65,61 @@ const mockStats = {
 
 export const Admin: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = localStorage.getItem('nava-admin-token');
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/admin/verify', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        if (response.ok) {
+          setIsAuthenticated(true);
+        } else {
+          localStorage.removeItem('nava-admin-token');
+        }
+      } catch (error) {
+        localStorage.removeItem('nava-admin-token');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
+  }, []);
+
+  const handleLogin = (token: string) => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('nava-admin-token');
+    setIsAuthenticated(false);
+    setLocation('/');
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full" />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <AdminLogin onLogin={handleLogin} />;
+  }
 
   const formatCurrency = (amount: number) => `$${amount.toFixed(2)}`;
   const formatDate = (dateString: string) => new Date(dateString).toLocaleDateString('en-US', {
@@ -78,9 +136,15 @@ export const Admin: React.FC = () => {
       
       <div className="container mx-auto px-6 py-20">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">NAVA Admin Dashboard</h1>
-          <p className="text-muted-foreground">Manage your sparkling beverage business</p>
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground mb-2">NAVA Admin Dashboard</h1>
+            <p className="text-muted-foreground">Manage your sparkling beverage business</p>
+          </div>
+          <Button variant="outline" onClick={handleLogout}>
+            <LogOut className="h-4 w-4 mr-2" />
+            Logout
+          </Button>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">

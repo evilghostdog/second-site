@@ -11,7 +11,6 @@ const navItems = [
   { name: 'Story', href: '#story' },
   { name: 'Reviews', href: '#testimonials' },
   { name: 'Shop', href: '/shop', route: '/shop' },
-  { name: 'Admin', href: '/admin', route: '/admin' },
 ];
 
 export const Navigation: React.FC = () => {
