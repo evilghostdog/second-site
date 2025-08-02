@@ -13,8 +13,21 @@ export const HeroSection: React.FC = () => {
         <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-primary/25 rounded-full animate-sparkle" style={{ animationDelay: '2s' }} />
       </div>
       
-      <div className="container mx-auto px-6 py-20 text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
+      {/* Large Banner-style Text Section */}
+      <div className="w-full relative z-10">
+        {/* Main Headline Banner */}
+        <div className="text-center py-32 px-6">
+          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-foreground leading-none tracking-tight animate-fade-up">
+            Vivid Taste.
+            <br />
+            <span className="text-primary block">Barely Sugar.</span>
+            <br />
+            Fully You.
+          </h1>
+        </div>
+        
+        {/* Product and CTA Section */}
+        <div className="container mx-auto px-6 pb-20 text-center">
           {/* Hero Product Image */}
           <div className="mb-12 relative">
             <div className="inline-block animate-float">
@@ -27,15 +40,6 @@ export const HeroSection: React.FC = () => {
             {/* Subtle glow effect */}
             <div className="absolute inset-0 bg-gradient-mango-chili/20 rounded-full blur-3xl scale-150 -z-10" />
           </div>
-          
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight animate-fade-up">
-            Vivid Taste.
-            <br />
-            <span className="text-primary">Barely Sugar.</span>
-            <br />
-            Fully You.
-          </h1>
           
           {/* Subtext */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-up" style={{ animationDelay: '0.2s' }}>
