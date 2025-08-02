@@ -13,21 +13,8 @@ export const HeroSection: React.FC = () => {
         <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-primary/25 rounded-full animate-sparkle" style={{ animationDelay: '2s' }} />
       </div>
       
-      {/* Large Banner-style Text Section */}
-      <div className="w-full relative z-10">
-        {/* Main Headline Banner */}
-        <div className="text-center py-32 px-6">
-          <h1 className="text-8xl md:text-9xl lg:text-[12rem] font-bold text-foreground leading-none tracking-tight animate-fade-up">
-            Vivid Taste.
-            <br />
-            <span className="text-primary block">Barely Sugar.</span>
-            <br />
-            Fully You.
-          </h1>
-        </div>
-        
-        {/* Product and CTA Section */}
-        <div className="container mx-auto px-6 pb-20 text-center">
+      <div className="container mx-auto px-6 py-20 text-center relative z-10">
+        <div className="max-w-4xl mx-auto">
           {/* Hero Product Image */}
           <div className="mb-12 relative">
             <div className="inline-block animate-float">
@@ -39,6 +26,19 @@ export const HeroSection: React.FC = () => {
             </div>
             {/* Subtle glow effect */}
             <div className="absolute inset-0 bg-gradient-mango-chili/20 rounded-full blur-3xl scale-150 -z-10" />
+          </div>
+          
+          {/* Main Headline with Banner Background */}
+          <div className="relative mb-8">
+            {/* Banner Background */}
+            <div className="absolute inset-0 bg-primary/10 backdrop-blur-sm rounded-2xl border border-primary/20 shadow-premium -mx-8 py-8"></div>
+            <h1 className="relative text-5xl md:text-7xl font-bold text-foreground leading-tight animate-fade-up py-8">
+              Vivid Taste.
+              <br />
+              <span className="text-primary">Barely Sugar.</span>
+              <br />
+              Fully You.
+            </h1>
           </div>
           
           {/* Subtext */}
