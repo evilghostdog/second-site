@@ -60,17 +60,23 @@
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, 
-      hsl(280 70% 70% / 0.1), 
-      hsl(200 80% 65% / 0.1), 
-      hsl(45 90% 70% / 0.1),
-      hsl(320 70% 70% / 0.1));
+      hsl(280 70% 70% / 0.2), 
+      hsl(200 80% 65% / 0.2), 
+      hsl(45 90% 70% / 0.2),
+      hsl(320 70% 70% / 0.2));
     --gradient-hero-vibrant: linear-gradient(45deg,
-      hsl(var(--hero-rainbow-1) / 0.3),
-      hsl(var(--hero-rainbow-2) / 0.3),
-      hsl(var(--hero-rainbow-3) / 0.3),
-      hsl(var(--hero-rainbow-4) / 0.3),
-      hsl(var(--hero-rainbow-5) / 0.3),
-      hsl(var(--hero-rainbow-6) / 0.3));
+      hsl(var(--hero-rainbow-1) / 0.4),
+      hsl(var(--hero-rainbow-2) / 0.4),
+      hsl(var(--hero-rainbow-3) / 0.4),
+      hsl(var(--hero-rainbow-4) / 0.4),
+      hsl(var(--hero-rainbow-5) / 0.4),
+      hsl(var(--hero-rainbow-6) / 0.4));
+    --gradient-background-dynamic: linear-gradient(135deg,
+      hsl(300 60% 85% / 0.3),
+      hsl(220 70% 85% / 0.2),
+      hsl(50 80% 85% / 0.3),
+      hsl(180 60% 85% / 0.2),
+      hsl(30 75% 85% / 0.3));
     --gradient-mango-chili: linear-gradient(135deg, hsl(var(--mango-chili-from)), hsl(var(--mango-chili-to)));
     --gradient-cucumber-lime: linear-gradient(135deg, hsl(var(--cucumber-lime-from)), hsl(var(--cucumber-lime-to)));
     --gradient-hibiscus-ginger: linear-gradient(135deg, hsl(var(--hibiscus-ginger-from)), hsl(var(--hibiscus-ginger-to)));
