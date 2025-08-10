@@ -15,13 +15,14 @@ const Index = () => {
 
   // Check if user has already verified age in this session
   useEffect(() => {
-    // Temporarily clear session storage to always show age gate for testing
-    sessionStorage.removeItem('nava-age-verified');
-    const ageVerified = sessionStorage.getItem('nava-age-verified');
-    if (ageVerified === 'true') {
-      setShowAgeGate(false);
-      setIsAgeVerified(true);
-    }
+    // For testing, let's skip the age gate temporarily to see the colorful content
+    setShowAgeGate(false);
+    setIsAgeVerified(true);
+    // const ageVerified = sessionStorage.getItem('nava-age-verified');
+    // if (ageVerified === 'true') {
+    //   setShowAgeGate(false);
+    //   setIsAgeVerified(true);
+    // }
   }, []);
 
   const handleAgeVerification = (isOfAge: boolean) => {
