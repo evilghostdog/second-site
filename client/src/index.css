@@ -37,18 +37,40 @@
     --input: 30 20% 88%;
     --ring: 20 25% 20%;
 
-    /* Flavor Colors */
-    --mango-chili-from: 25 85% 65%;
-    --mango-chili-to: 0 75% 55%;
-    --cucumber-lime-from: 120 45% 75%;
-    --cucumber-lime-to: 85 65% 65%;
-    --hibiscus-ginger-from: 340 55% 75%;
-    --hibiscus-ginger-to: 45 75% 70%;
-    --grapefruit-rosemary-from: 350 45% 75%;
-    --grapefruit-rosemary-to: 150 35% 55%;
+    /* Flavor Colors - Enhanced vibrancy */
+    --mango-chili-from: 25 95% 70%;
+    --mango-chili-to: 0 85% 60%;
+    --cucumber-lime-from: 120 60% 70%;
+    --cucumber-lime-to: 85 75% 65%;
+    --hibiscus-ginger-from: 340 70% 75%;
+    --hibiscus-ginger-to: 45 85% 70%;
+    --grapefruit-rosemary-from: 350 65% 75%;
+    --grapefruit-rosemary-to: 150 50% 55%;
+
+    /* Hero specific colors */
+    --hero-accent-1: 280 70% 70%;
+    --hero-accent-2: 200 80% 65%;
+    --hero-accent-3: 45 90% 70%;
+    --hero-rainbow-1: 320 70% 70%;
+    --hero-rainbow-2: 260 75% 70%;
+    --hero-rainbow-3: 200 80% 65%;
+    --hero-rainbow-4: 160 70% 65%;
+    --hero-rainbow-5: 120 70% 70%;
+    --hero-rainbow-6: 60 85% 70%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(30 40% 96%), hsl(25 50% 92%));
+    --gradient-hero: linear-gradient(135deg, 
+      hsl(280 70% 70% / 0.1), 
+      hsl(200 80% 65% / 0.1), 
+      hsl(45 90% 70% / 0.1),
+      hsl(320 70% 70% / 0.1));
+    --gradient-hero-vibrant: linear-gradient(45deg,
+      hsl(var(--hero-rainbow-1) / 0.3),
+      hsl(var(--hero-rainbow-2) / 0.3),
+      hsl(var(--hero-rainbow-3) / 0.3),
+      hsl(var(--hero-rainbow-4) / 0.3),
+      hsl(var(--hero-rainbow-5) / 0.3),
+      hsl(var(--hero-rainbow-6) / 0.3));
     --gradient-mango-chili: linear-gradient(135deg, hsl(var(--mango-chili-from)), hsl(var(--mango-chili-to)));
     --gradient-cucumber-lime: linear-gradient(135deg, hsl(var(--cucumber-lime-from)), hsl(var(--cucumber-lime-to)));
     --gradient-hibiscus-ginger: linear-gradient(135deg, hsl(var(--hibiscus-ginger-from)), hsl(var(--hibiscus-ginger-to)));
