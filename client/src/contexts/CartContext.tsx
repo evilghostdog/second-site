@@ -1,9 +1,15 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { CartItem, Product, products } from '@shared/products';
+import type { Product } from '@shared/schema';
+
+export interface CartItem {
+  productId: string;
+  quantity: number;
+  product: Product;
+}
 
 interface CartContextType {
   items: CartItem[];
-  addToCart: (productId: string, quantity?: number) => void;
+  addToCart: (productId: string, quantity?: number) => Promise<void>;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -45,22 +51,29 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem('nava-cart', JSON.stringify(items));
   }, [items]);
 
-  const addToCart = (productId: string, quantity: number = 1) => {
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+  const addToCart = async (productId: string, quantity: number = 1) => {
+    try {
+      // Fetch product from API
+      const response = await fetch(`/api/products/${productId}`);
+      if (!response.ok) return;
+      
+      const product = await response.json();
 
-    setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.productId === productId);
-      if (existingItem) {
-        return prevItems.map(item =>
-          item.productId === productId
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
-      } else {
-        return [...prevItems, { productId, quantity, product }];
-      }
-    });
+      setItems(prevItems => {
+        const existingItem = prevItems.find(item => item.productId === productId);
+        if (existingItem) {
+          return prevItems.map(item =>
+            item.productId === productId
+              ? { ...item, quantity: item.quantity + quantity }
+              : item
+          );
+        } else {
+          return [...prevItems, { productId, quantity, product }];
+        }
+      });
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+    }
   };
 
   const removeFromCart = (productId: string) => {
@@ -91,7 +104,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+    return items.reduce((total, item) => total + (parseFloat(item.product.price) * item.quantity), 0);
   };
 
   return (

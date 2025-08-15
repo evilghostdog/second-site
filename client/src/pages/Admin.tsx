@@ -19,6 +19,7 @@ import {
 import { Navigation } from '@/components/Navigation';
 import { AdminLogin } from './AdminLogin';
 import { useLocation } from 'wouter';
+import { ProductManagement } from '@/components/ProductManagement';
 
 // Mock data for demonstration - in production, this would come from your database
 const mockOrders = [
@@ -320,32 +321,7 @@ export const Admin: React.FC = () => {
 
           {/* Products Tab */}
           <TabsContent value="products" className="space-y-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold">Product Management</h2>
-              <Button>
-                <Package className="h-4 w-4 mr-2" />
-                Add Product
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mockStats.topProducts.map((product) => (
-                <Card key={product.name}>
-                  <CardHeader>
-                    <CardTitle className="text-lg">{product.name}</CardTitle>
-                    <CardDescription>
-                      {product.sales} sales • {formatCurrency(product.revenue)} revenue
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex justify-between items-center">
-                      <Badge variant="outline">In Stock</Badge>
-                      <Button variant="outline" size="sm">Edit</Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <ProductManagement />
           </TabsContent>
 
           {/* Settings Tab */}

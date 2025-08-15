@@ -3,13 +3,18 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Plus } from 'lucide-react';
-import { products } from '@shared/products';
 import { useCart } from '@/contexts/CartContext';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { useQuery } from '@tanstack/react-query';
+import type { Product } from '@shared/schema';
 
 export const Shop: React.FC = () => {
   const { addToCart, setIsOpen } = useCart();
+
+  const { data: products = [], isLoading, error } = useQuery<Product[]>({
+    queryKey: ['/api/products'],
+  });
 
   const handleAddToCart = (productId: string) => {
     addToCart(productId, 1);
@@ -32,9 +37,25 @@ export const Shop: React.FC = () => {
           </p>
         </div>
 
+        {/* Loading State */}
+        {isLoading && (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full" />
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="text-center py-20">
+            <p className="text-red-500 mb-4">Failed to load products</p>
+            <Button onClick={() => window.location.reload()}>Try Again</Button>
+          </div>
+        )}
+
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {products.map((product, index) => (
+        {!isLoading && !error && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {products.filter(product => product.inStock).map((product, index) => (
             <Card 
               key={product.id} 
               className="group overflow-hidden shadow-soft hover:shadow-premium transition-all duration-300 hover:-translate-y-2"
@@ -84,16 +105,16 @@ export const Shop: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="text-2xl font-bold text-foreground">
-                      ${product.price}
+                      ${parseFloat(product.price).toFixed(2)}
                     </span>
                     {product.id === 'variety-pack' && (
                       <p className="text-sm text-muted-foreground">
-                        ${(product.price / 24).toFixed(2)} per can
+                        ${(parseFloat(product.price) / 24).toFixed(2)} per can
                       </p>
                     )}
                     {product.id !== 'variety-pack' && (
                       <p className="text-sm text-muted-foreground">
-                        ${(product.price / 6).toFixed(2)} per can
+                        ${(parseFloat(product.price) / 6).toFixed(2)} per can
                       </p>
                     )}
                   </div>
@@ -110,8 +131,9 @@ export const Shop: React.FC = () => {
                 </Button>
               </CardFooter>
             </Card>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Benefits Section */}
         <div className="mt-20 text-center">
