@@ -149,6 +149,26 @@
   }
 }
 
+/* Tour highlight effect */
+.tour-highlight {
+  position: relative;
+  z-index: 45 !important;
+  outline: 3px solid hsl(var(--hero-accent-1)) !important;
+  outline-offset: 4px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 30px hsl(var(--hero-accent-1) / 0.3) !important;
+  animation: tour-pulse 2s infinite !important;
+}
+
+@keyframes tour-pulse {
+  0%, 100% {
+    box-shadow: 0 0 30px hsl(var(--hero-accent-1) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--hero-accent-1) / 0.5);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

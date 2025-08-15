@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Router, Route } from "wouter";
 import { CartProvider } from "@/contexts/CartContext";
+import { OnboardingProvider } from "@/contexts/OnboardingContext";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import Checkout from "./pages/Checkout";
@@ -15,21 +16,23 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <CartProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <Router>
-          <Route path="/"><Index /></Route>
-          <Route path="/shop"><Shop /></Route>
-          <Route path="/checkout"><Checkout /></Route>
-          <Route path="/order-success"><OrderSuccess /></Route>
-          <Route path="/admin"><Admin /></Route>
-          {/* Catch-all route for 404 */}
-          <Route><NotFound /></Route>
-        </Router>
-      </TooltipProvider>
-    </CartProvider>
+    <OnboardingProvider>
+      <CartProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <Router>
+            <Route path="/"><Index /></Route>
+            <Route path="/shop"><Shop /></Route>
+            <Route path="/checkout"><Checkout /></Route>
+            <Route path="/order-success"><OrderSuccess /></Route>
+            <Route path="/admin"><Admin /></Route>
+            {/* Catch-all route for 404 */}
+            <Route><NotFound /></Route>
+          </Router>
+        </TooltipProvider>
+      </CartProvider>
+    </OnboardingProvider>
   </QueryClientProvider>
 );
 

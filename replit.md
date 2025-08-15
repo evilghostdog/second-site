@@ -40,11 +40,19 @@ Preferred communication style: Simple, everyday language.
 - **Responsive Design**: Mobile-first approach with responsive breakpoints and adaptive layouts
 - **State Management**: React Context for cart management with localStorage persistence
 - **Animations**: CSS-based animations for enhanced user experience including floating elements and fade-in effects
+- **Onboarding System**: Interactive tour with tooltips, highlighting key features, progress tracking, and personalized guidance for first-time users
 
 ### Authentication & Age Verification
 - **Age Gate**: Session-based age verification that prevents underage access to alcoholic beverage content
 - **Session Management**: Browser sessionStorage for maintaining age verification status
 - **Redirect Logic**: Automatic redirection for underage users to external safe sites
+
+### User Experience Features
+- **Interactive Onboarding Tour**: Multi-step guided tour with tooltips highlighting key features
+- **Tour Management**: Context-based tour state management with localStorage persistence
+- **Progressive Disclosure**: Smart positioning system that highlights elements and provides contextual information
+- **Accessibility**: Keyboard navigation support and screen reader friendly tour components
+- **Tour Controls**: Skip, previous/next navigation, progress indicators, and manual tour restart functionality
 
 ## External Dependencies
 

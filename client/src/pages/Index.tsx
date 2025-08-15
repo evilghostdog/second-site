@@ -8,10 +8,14 @@ import { StorySection } from '@/components/StorySection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { SubscriptionSection } from '@/components/SubscriptionSection';
 import { Footer } from '@/components/Footer';
+import { OnboardingTour } from '@/components/OnboardingTour';
+import { TourHelpButton } from '@/components/TourHelpButton';
+import { useOnboarding } from '@/contexts/OnboardingContext';
 
 const Index = () => {
   const [showAgeGate, setShowAgeGate] = useState(true);
   const [isAgeVerified, setIsAgeVerified] = useState(false);
+  const { showTour, completeTour, skipTour } = useOnboarding();
 
   // Check if user has already verified age in this session
   useEffect(() => {
@@ -52,14 +56,16 @@ const Index = () => {
       {/* Main Content - Only show after age verification */}
       {isAgeVerified && (
         <>
-          <Navigation />
-          <section id="hero">
+          <div data-tour="main-navigation">
+            <Navigation />
+          </div>
+          <section id="hero" data-tour="hero-section">
             <HeroSection />
           </section>
           <section id="benefits">
             <BenefitsSection />
           </section>
-          <section id="flavors">
+          <section id="flavors" data-tour="flavors-section">
             <FlavorsSection />
           </section>
           <section id="story">
@@ -72,6 +78,16 @@ const Index = () => {
             <SubscriptionSection />
           </section>
           <Footer />
+          
+          {/* Onboarding Tour */}
+          <OnboardingTour
+            isVisible={showTour}
+            onComplete={completeTour}
+            onSkip={skipTour}
+          />
+          
+          {/* Tour Help Button */}
+          {!showTour && <TourHelpButton />}
         </>
       )}
     </div>

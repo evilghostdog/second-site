@@ -85,12 +85,13 @@ export const HeroSection: React.FC = () => {
           </p>
           
           {/* Colorful CTA Button */}
-          <div className="animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <div className="animate-fade-up" style={{ animationDelay: '0.4s' }} data-tour="shop-button">
             <Button 
               variant="premium" 
               size="xl" 
               className="group relative overflow-hidden bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105"
               onClick={() => setLocation('/shop')}
+              data-testid="shop-now-button"
             >
               <span className="relative z-10">Shop Now</span>
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
