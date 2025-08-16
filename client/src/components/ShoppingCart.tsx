@@ -62,7 +62,7 @@ export const ShoppingCart: React.FC = () => {
                     <div className="flex-1">
                       <h4 className="font-semibold text-sm">{item.product.name}</h4>
                       <p className="text-muted-foreground text-xs mt-1">
-                        ${item.product.price.toFixed(2)} each
+                        ${Number(item.product.price).toFixed(2)} each
                       </p>
                       <div className="flex items-center justify-between mt-2">
                         <div className="flex items-center gap-2">
