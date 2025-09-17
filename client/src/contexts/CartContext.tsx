@@ -104,7 +104,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + (parseFloat(item.product.price) * item.quantity), 0);
+    return items.reduce((total, item) => {
+      const price = parseFloat(item.product.price);
+      // Validate price is a valid number
+      if (isNaN(price) || price < 0) {
+        console.warn(`Invalid price for product ${item.productId}:`, item.product.price);
+        return total;
+      }
+      return total + (price * item.quantity);
+    }, 0);
   };
 
   return (

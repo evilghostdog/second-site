@@ -24,7 +24,14 @@ export const insertUserSchema = createInsertSchema(users).pick({
   password: true,
 });
 
-export const insertProductSchema = createInsertSchema(products).omit({});
+// Create proper Zod schema with robust number validation for price
+export const insertProductSchema = createInsertSchema(products).omit({}).extend({
+  price: z.coerce.number()
+    .finite()
+    .nonnegative({ message: "Price must be a positive number" })
+    .max(1_000_000, { message: "Price cannot exceed $1,000,000" })
+    .transform(n => n.toFixed(2))
+});
 export const updateProductSchema = insertProductSchema.partial();
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

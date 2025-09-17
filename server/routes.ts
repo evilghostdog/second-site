@@ -125,25 +125,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Stripe payment route for one-time payments
   app.post("/api/create-payment-intent", async (req, res) => {
     try {
-      const { amount, items } = req.body;
+      const { items } = req.body;
       
-      // Calculate shipping
-      const shipping = amount >= 50 ? 0 : 8.99;
-      const totalAmount = amount + shipping;
+      if (!items || !Array.isArray(items) || items.length === 0) {
+        return res.status(400).json({ message: "Items are required" });
+      }
+      
+      // Calculate subtotal from server-side product prices (SECURITY: never trust client amounts)
+      let subtotal = 0;
+      for (const item of items) {
+        const product = await storage.getProduct(item.productId);
+        if (!product) {
+          return res.status(400).json({ message: `Product ${item.productId} not found` });
+        }
+        if (!product.inStock) {
+          return res.status(400).json({ message: `Product ${product.name} is out of stock` });
+        }
+        const productPrice = parseFloat(product.price);
+        const quantity = parseInt(item.quantity) || 1;
+        subtotal += productPrice * quantity;
+      }
+      
+      // Calculate shipping based on server-computed subtotal
+      const shipping = subtotal >= 50 ? 0 : 8.99;
+      const totalAmount = subtotal + shipping;
       
       const paymentIntent = await stripe.paymentIntents.create({
         amount: Math.round(totalAmount * 100), // Convert to cents
         currency: "usd",
         metadata: {
           items: JSON.stringify(items),
-          subtotal: amount.toString(),
-          shipping: shipping.toString(),
+          subtotal: subtotal.toFixed(2),
+          shipping: shipping.toFixed(2),
         }
       });
       
       res.json({ 
         clientSecret: paymentIntent.client_secret,
-        amount: totalAmount 
+        amount: totalAmount,
+        subtotal,
+        shipping
       });
     } catch (error: any) {
       console.error('Stripe payment intent creation error:', error);
