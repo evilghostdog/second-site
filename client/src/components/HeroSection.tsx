@@ -48,7 +48,7 @@ export const HeroSection: React.FC = () => {
             <div className="inline-block animate-float">
               <img 
                 src={mangoChiliCan} 
-                alt="NAVA Mango-Chili Seltzer" 
+                alt="Mira Mango-Chili Seltzer" 
                 className="w-64 h-auto mx-auto drop-shadow-2xl relative z-10"
               />
             </div>

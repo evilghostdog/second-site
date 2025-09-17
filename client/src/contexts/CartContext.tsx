@@ -33,9 +33,22 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Load cart from localStorage on mount
+  // Load cart from localStorage on mount with migration
   useEffect(() => {
-    const savedCart = localStorage.getItem('nava-cart');
+    // First try to load from new key
+    let savedCart = localStorage.getItem('mira-cart');
+    
+    // If not found, migrate from old key
+    if (!savedCart) {
+      savedCart = localStorage.getItem('nava-cart');
+      if (savedCart) {
+        // Migrate to new key
+        localStorage.setItem('mira-cart', savedCart);
+        localStorage.removeItem('nava-cart');
+        console.log('Migrated cart data from nava-cart to mira-cart');
+      }
+    }
+    
     if (savedCart) {
       try {
         const parsedCart = JSON.parse(savedCart);
@@ -48,7 +61,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('nava-cart', JSON.stringify(items));
+    localStorage.setItem('mira-cart', JSON.stringify(items));
   }, [items]);
 
   const addToCart = async (productId: string, quantity: number = 1) => {

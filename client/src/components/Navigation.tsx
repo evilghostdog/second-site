@@ -58,7 +58,7 @@ export const Navigation: React.FC = () => {
               onClick={() => setLocation('/')}
               className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
             >
-              NAVA
+              Mira
             </button>
 
             {/* Desktop Navigation */}

@@ -28,9 +28,29 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
   const [isFirstVisit, setIsFirstVisit] = useState(false);
 
   useEffect(() => {
-    // Check if user has completed onboarding before
-    const hasCompletedOnboarding = localStorage.getItem('nava-onboarding-completed');
-    const hasSkippedOnboarding = localStorage.getItem('nava-onboarding-skipped');
+    // Try new keys first
+    let hasCompletedOnboarding = localStorage.getItem('mira-onboarding-completed');
+    let hasSkippedOnboarding = localStorage.getItem('mira-onboarding-skipped');
+    
+    // Migrate from old keys if new keys don't exist
+    if (!hasCompletedOnboarding && !hasSkippedOnboarding) {
+      const oldCompleted = localStorage.getItem('nava-onboarding-completed');
+      const oldSkipped = localStorage.getItem('nava-onboarding-skipped');
+      
+      if (oldCompleted) {
+        localStorage.setItem('mira-onboarding-completed', oldCompleted);
+        localStorage.removeItem('nava-onboarding-completed');
+        hasCompletedOnboarding = oldCompleted;
+        console.log('Migrated onboarding completed status');
+      }
+      
+      if (oldSkipped) {
+        localStorage.setItem('mira-onboarding-skipped', oldSkipped);
+        localStorage.removeItem('nava-onboarding-skipped');
+        hasSkippedOnboarding = oldSkipped;
+        console.log('Migrated onboarding skipped status');
+      }
+    }
     
     if (!hasCompletedOnboarding && !hasSkippedOnboarding) {
       setIsFirstVisit(true);
@@ -49,18 +69,18 @@ export const OnboardingProvider: React.FC<OnboardingProviderProps> = ({ children
 
   const completeTour = () => {
     setShowTour(false);
-    localStorage.setItem('nava-onboarding-completed', 'true');
-    localStorage.removeItem('nava-onboarding-skipped');
+    localStorage.setItem('mira-onboarding-completed', 'true');
+    localStorage.removeItem('mira-onboarding-skipped');
   };
 
   const skipTour = () => {
     setShowTour(false);
-    localStorage.setItem('nava-onboarding-skipped', 'true');
+    localStorage.setItem('mira-onboarding-skipped', 'true');
   };
 
   const resetTour = () => {
-    localStorage.removeItem('nava-onboarding-completed');
-    localStorage.removeItem('nava-onboarding-skipped');
+    localStorage.removeItem('mira-onboarding-completed');
+    localStorage.removeItem('mira-onboarding-skipped');
     setIsFirstVisit(true);
     setShowTour(true);
   };

@@ -72,7 +72,20 @@ export const Admin: React.FC = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem('nava-admin-token');
+      // Try new key first, migrate from old key if needed
+      let token = localStorage.getItem('mira-admin-token');
+      
+      if (!token) {
+        const oldToken = localStorage.getItem('nava-admin-token');
+        if (oldToken) {
+          // Migrate token to new key
+          localStorage.setItem('mira-admin-token', oldToken);
+          localStorage.removeItem('nava-admin-token');
+          token = oldToken;
+          console.log('Migrated admin token from nava-admin-token to mira-admin-token');
+        }
+      }
+      
       if (!token) {
         setIsLoading(false);
         return;
@@ -88,10 +101,10 @@ export const Admin: React.FC = () => {
         if (response.ok) {
           setIsAuthenticated(true);
         } else {
-          localStorage.removeItem('nava-admin-token');
+          localStorage.removeItem('mira-admin-token');
         }
       } catch (error) {
-        localStorage.removeItem('nava-admin-token');
+        localStorage.removeItem('mira-admin-token');
       } finally {
         setIsLoading(false);
       }
@@ -105,7 +118,7 @@ export const Admin: React.FC = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('nava-admin-token');
+    localStorage.removeItem('mira-admin-token');
     setIsAuthenticated(false);
     setLocation('/');
   };
@@ -139,7 +152,7 @@ export const Admin: React.FC = () => {
         {/* Header */}
         <div className="mb-8 flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-foreground mb-2">NAVA Admin Dashboard</h1>
+            <h1 className="text-3xl font-bold text-foreground mb-2">Mira Admin Dashboard</h1>
             <p className="text-muted-foreground">Manage your sparkling beverage business</p>
           </div>
           <Button variant="outline" onClick={handleLogout}>

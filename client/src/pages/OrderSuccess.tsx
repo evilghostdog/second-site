@@ -18,7 +18,7 @@ export const OrderSuccess: React.FC = () => {
               </div>
               <CardTitle className="text-2xl text-green-800">Order Confirmed!</CardTitle>
               <CardDescription className="text-lg">
-                Thank you for your NAVA purchase
+                Thank you for your Mira purchase
               </CardDescription>
             </CardHeader>
             
@@ -28,7 +28,7 @@ export const OrderSuccess: React.FC = () => {
                   Your order has been successfully processed and you'll receive a confirmation email shortly.
                 </p>
                 <p className="text-sm text-muted-foreground">
-                  Your NAVA sparkling drinks will be shipped within 2-3 business days.
+                  Your Mira sparkling drinks will be shipped within 2-3 business days.
                 </p>
               </div>
               

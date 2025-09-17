@@ -22,7 +22,7 @@ const TOUR_STEPS: TourStep[] = [
   {
     id: 'welcome',
     target: 'hero-section',
-    title: 'Welcome to NAVA!',
+    title: 'Welcome to Mira!',
     content: 'Discover premium sparkling beverages with bold flavors and zero sugar. Let us show you around!',
     position: 'bottom',
     icon: <Sparkles className="w-5 h-5 text-purple-500" />
@@ -47,7 +47,7 @@ const TOUR_STEPS: TourStep[] = [
     id: 'shopping',
     target: 'shop-button',
     title: 'Start Shopping',
-    content: 'Ready to try NAVA? Click here to browse our products and add them to your cart.',
+    content: 'Ready to try Mira? Click here to browse our products and add them to your cart.',
     position: 'top',
     icon: <ShoppingCart className="w-5 h-5 text-green-500" />
   }

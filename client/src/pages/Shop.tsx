@@ -29,7 +29,7 @@ export const Shop: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Shop NAVA
+            Shop Mira
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Choose your flavor journey. All products feature our signature clean ingredients, 
@@ -138,7 +138,7 @@ export const Shop: React.FC = () => {
         {/* Benefits Section */}
         <div className="mt-20 text-center">
           <h2 className="text-3xl font-bold text-foreground mb-8">
-            Why Choose NAVA?
+            Why Choose Mira?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">

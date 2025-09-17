@@ -22,7 +22,7 @@ const Index = () => {
     // For testing, let's skip the age gate temporarily to see the colorful content
     setShowAgeGate(false);
     setIsAgeVerified(true);
-    // const ageVerified = sessionStorage.getItem('nava-age-verified');
+    // const ageVerified = sessionStorage.getItem('mira-age-verified');
     // if (ageVerified === 'true') {
     //   setShowAgeGate(false);
     //   setIsAgeVerified(true);
@@ -31,7 +31,7 @@ const Index = () => {
 
   const handleAgeVerification = (isOfAge: boolean) => {
     if (isOfAge) {
-      sessionStorage.setItem('nava-age-verified', 'true');
+      sessionStorage.setItem('mira-age-verified', 'true');
       setShowAgeGate(false);
       setIsAgeVerified(true);
     } else {

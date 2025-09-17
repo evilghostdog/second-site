@@ -9,7 +9,7 @@ export const StorySection: React.FC = () => {
           {/* Section Header */}
           <div className="text-center mb-16 animate-fade-up">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Why NAVA?
+              Why Mira?
             </h2>
           </div>
 
@@ -28,7 +28,7 @@ export const StorySection: React.FC = () => {
                 </p>
                 
                 <p>
-                  NAVA isn't just another sparkling drink. It's a new category entirely. 
+                  Mira isn't just another sparkling drink. It's a new category entirely. 
                   We've reimagined what a modern alcoholic beverage can be: clean, 
                   sophisticated, and unapologetically bold.
                 </p>
@@ -52,7 +52,7 @@ export const StorySection: React.FC = () => {
               <div className="relative overflow-hidden rounded-2xl shadow-premium">
                 <img 
                   src={lifestoryImage} 
-                  alt="People enjoying NAVA at sunset"
+                  alt="People enjoying Mira at sunset"
                   className="w-full h-[500px] object-cover"
                 />
                 {/* Subtle overlay */}

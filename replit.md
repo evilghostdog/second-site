@@ -1,8 +1,8 @@
-# NAVA Seltzer - Premium Sparkling Beverage E-Commerce Site
+# Mira Seltzer - Premium Sparkling Beverage E-Commerce Site
 
 ## Overview
 
-NAVA is a premium sparkling alcoholic beverage brand focused on clean ingredients, zero sugar, and sophisticated flavors. This is a complete e-commerce application featuring an age gate, product showcase, shopping cart, and secure payment processing. The application presents a modern, wellness-focused alcoholic beverage with four distinct flavors: Mango-Chili, Cucumber-Lime, Hibiscus-Ginger, and Grapefruit-Rosemary.
+Mira is a premium sparkling alcoholic beverage brand focused on clean ingredients, zero sugar, and sophisticated flavors. This is a complete e-commerce application featuring an age gate, product showcase, shopping cart, and secure payment processing. The application presents a modern, wellness-focused alcoholic beverage with four distinct flavors: Mango-Chili, Cucumber-Lime, Hibiscus-Ginger, and Grapefruit-Rosemary.
 
 ## User Preferences
 
@@ -33,7 +33,7 @@ Preferred communication style: Simple, everyday language.
 - **Migrations**: Drizzle-kit for database schema management and migrations
 
 ### Component Architecture
-- **Design System**: Custom Tailwind configuration with NAVA brand colors and gradients
+- **Design System**: Custom Tailwind configuration with Mira brand colors and gradients
 - **Component Library**: Comprehensive UI components including age gate, product showcase, shopping cart, checkout forms, payment processing, and admin dashboard
 - **E-Commerce Features**: Product catalog, shopping cart with persistent storage, secure checkout flow, order confirmation, and business analytics
 - **Admin Dashboard**: Complete business management interface with order tracking, revenue analytics, product management, and Stripe integration monitoring

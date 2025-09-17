@@ -94,7 +94,7 @@ export const SubscriptionSection: React.FC = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Welcome to NAVA!</h3>
+                  <h3 className="text-xl font-bold mb-2">Welcome to Mira!</h3>
                   <p className="text-white/80">
                     You're now on the list for early access to new flavors and exclusive events.
                   </p>

@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Logo & Brand */}
             <div className="md:col-span-2">
-              <h3 className="text-3xl font-bold text-foreground mb-4">NAVA</h3>
+              <h3 className="text-3xl font-bold text-foreground mb-4">Mira</h3>
               <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
                 Premium sparkling drinks for those who refuse to compromise. 
                 Clean ingredients, bold flavors, zero sugar.
@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="text-muted-foreground text-sm">
                 <p className="font-semibold text-foreground mb-1">Alcohol 5% vol. Drink responsibly.</p>
-                <p>Only for ages 18+ in BE and EU. © 2024 NAVA. All rights reserved.</p>
+                <p>Only for ages 18+ in BE and EU. © 2024 Mira. All rights reserved.</p>
               </div>
               
               <div className="text-muted-foreground text-sm text-center md:text-right">

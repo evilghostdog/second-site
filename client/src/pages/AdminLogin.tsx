@@ -35,7 +35,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
 
       if (response.ok) {
         const data = await response.json();
-        localStorage.setItem('nava-admin-token', data.token);
+        localStorage.setItem('mira-admin-token', data.token);
         onLogin(data.token);
       } else {
         const errorData = await response.json();
@@ -57,7 +57,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
               <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                 <Lock className="w-6 h-6 text-primary" />
               </div>
-              <CardTitle className="text-2xl">NAVA Admin</CardTitle>
+              <CardTitle className="text-2xl">Mira Admin</CardTitle>
               <CardDescription>
                 Sign in to access the admin dashboard
               </CardDescription>
@@ -125,7 +125,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
                   onClick={() => setLocation('/')}
                   className="text-sm text-muted-foreground"
                 >
-                  Back to NAVA
+                  Back to Mira
                 </Button>
               </div>
             </CardContent>

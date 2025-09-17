@@ -26,7 +26,7 @@ export class MemStorage implements IStorage {
     this.products = new Map();
     this.currentId = 1;
     
-    // Initialize with default NAVA products
+    // Initialize with default MIRA products
     this.initializeProducts();
   }
 

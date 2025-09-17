@@ -79,7 +79,7 @@ export const FlavorsSection: React.FC = () => {
                 <div className="mb-6 relative">
                   <img 
                     src={flavor.image} 
-                    alt={`NAVA ${flavor.name}`}
+                    alt={`Mira ${flavor.name}`}
                     className={`w-32 h-auto mx-auto transition-transform duration-500 group-hover:scale-110 ${
                       hoveredFlavor === flavor.id ? 'rotate-12' : ''
                     }`}
