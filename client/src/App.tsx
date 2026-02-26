@@ -35,13 +35,12 @@ const App = () => (
           <Toaster />
           <Sonner />
           <Router>
-            <Route path="/"><Index /></Route>
-            <Route path="/shop"><Shop /></Route>
-            <Route path="/checkout"><Checkout /></Route>
-            <Route path="/order-success"><OrderSuccess /></Route>
-            <Route path="/admin"><Admin /></Route>
-            {/* Catch-all route for 404 */}
-            <Route><NotFound /></Route>
+            <Route path="/" component={Index} />
+            <Route path="/shop" component={Shop} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/order-success" component={OrderSuccess} />
+            <Route path="/admin" component={Admin} />
+            <Route path="/*" component={NotFound} />
           </Router>
         </TooltipProvider>
       </CartProvider>
