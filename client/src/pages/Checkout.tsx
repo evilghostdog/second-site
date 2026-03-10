@@ -109,12 +109,9 @@ export const Checkout: React.FC = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ 
-        amount: getTotalPrice(),
         items: items.map(item => ({
-          id: item.productId,
-          quantity: item.quantity,
-          name: item.product.name,
-          price: item.product.price
+          productId: item.productId,
+          quantity: item.quantity
         }))
       }),
     })
@@ -180,7 +177,7 @@ export const Checkout: React.FC = () => {
                       </div>
                     </div>
                     <p className="font-medium">
-                      ${(item.product.price * item.quantity).toFixed(2)}
+                      ${(parseFloat(item.product.price) * item.quantity).toFixed(2)}
                     </p>
                   </div>
                 ))}
