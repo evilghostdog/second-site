@@ -10,6 +10,7 @@ import Shop from "./pages/Shop";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import Admin from "./pages/Admin";
+import Lab from "./pages/Lab";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -18,9 +19,7 @@ const queryClient = new QueryClient({
       queryFn: async ({ queryKey }) => {
         const url = queryKey[0] as string;
         const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return response.json();
       },
     },
@@ -40,6 +39,8 @@ const App = () => (
             <Route path="/checkout" component={Checkout} />
             <Route path="/order-success" component={OrderSuccess} />
             <Route path="/admin" component={Admin} />
+            <Route path="/lab" component={Lab} />
+            <Route path="/lab/*" component={Lab} />
             <Route path="/*" component={NotFound} />
           </Router>
         </TooltipProvider>
